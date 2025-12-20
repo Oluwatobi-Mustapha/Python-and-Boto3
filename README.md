@@ -30,3 +30,5 @@ Besides, I touched how list slicing works and how useful it can be, especially d
 In Python, an empty list [] evaluates to False, not 0. An error occurs only when accessing an invalid index. 
 
 pop() with no argument removes the last item, while pop(0) removes the first item.
+
+You use .index() to convert a Name into a Number, so you can use that number to modify the list, which was what I did in the line 20 0f my code
