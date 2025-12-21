@@ -7,7 +7,7 @@ Learned: [str, int, bool, float]
 
 Applied: AWS cost calculation
 
-File: [`data_types`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/data_types.py)
+File: [`data types`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/data_types.py)
 
 # Day 2: Python Operators
 
@@ -23,7 +23,7 @@ Learned: [ If, elif, else conditional logic, dictionary, String .join() to combi
 
 Apllied: AWS service mapper
 
-File: [`Condtional_statements`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/conditional_statements.py)
+File: [`Condtional statements`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/conditional_statements.py)
 
 # Day 4: lists.
 
@@ -37,8 +37,8 @@ In Python, an empty list [] evaluates to False, not 0. An error occurs only when
 
 pop() with no argument removes the last item, while pop(0) removes the first item.
 
-File: [`IAM_Cleanup`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/IAM_Cleanup.py)
-      [`Access_key_rotator`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/Access_Key_Rotator.py)
+File: [`IAM Cleanup`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/IAM_Cleanup.py)
+      [`Access key rotator`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/Access_Key_Rotator.py)
 
       
       
