@@ -4,7 +4,7 @@ You need to clean it up programmatically before migrating them to a new Identity
 def main():
     """Defining the list"""
 
-    iam_users = ['admin', 's_jobs', 'b_gates', 'root', 'j_bezos', 'dev_ops', 'root']
+    iam_users = ['admin', 's_jobs', 'b_gates', 'j_bezos', 'dev_ops', 'root']
 
     # The user 'root' should never be used for daily tasks. Check if 'root' is in the list.
     if 'root' in  iam_users:
