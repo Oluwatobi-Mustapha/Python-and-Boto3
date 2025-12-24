@@ -30,6 +30,7 @@ File: [`Condtional statements`](https://github.com/Oluwatobi-Mustapha/Python/blo
 Learned Python lists by building a basic IAM cleanup script. I now understand lists (mutable) vs tuples (immutable), conditional use of if and in, indexing, and replacing values. I also learned list slicing and its usefulness during audits.
 
 An empty list [] evaluates to False; errors only occur when accessing invalid indexes. pop() removes the last item, while pop(0) removes the first. I used .index() to convert a name to an index so I could modify the list (used in line 20 of the code).
+
 File: [`IAM Cleanup`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/IAM_Cleanup.py)
 
 # Day 5: Lists continuation
