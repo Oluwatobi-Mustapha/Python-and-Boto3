@@ -21,7 +21,7 @@ File: [`Operators`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/opera
 
 Learned: [ If, elif, else conditional logic, dictionary, String .join() to combine items with separator, Input validation (.lower(), .strip()) ]
 
-Apllied: AWS service mapper
+Application: AWS service mapper
 
 File: [`Condtional statements`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/conditional_statements.py)
 
@@ -43,6 +43,14 @@ File: [`Access key rotator`](https://github.com/Oluwatobi-Mustapha/Python/blob/m
 Learned how to extracts, modify and assign a new file to a dictionary
 
 File: [`Dict`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/Dictionary.py)
+
+# Day 7: Loops
+
+Learned: for, while, else, .get(), in, else, if, break(stop), continue(skip).
+
+Application: Audit tool
+
+File:[`IAM User Audit Tool`](https://github.com/Oluwatobi-Mustapha/Python/blob/main/IAM_User_Audit_Tool.py)
 
       
       
