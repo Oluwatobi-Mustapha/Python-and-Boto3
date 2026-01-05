@@ -12,7 +12,7 @@ try:
   
 except ClientError as e:
 
-    error_code = e.response['Error']['Code'] # This helps us checks for what kinds of error occurred
+    error_code = e.response['Error']['Code'] # This helps us checks for what kind of error occurred
 
     if error_code == 'BucketAlreadyOwnedByYou':
         print(f"Note: This bucket is already owned by you {bucket_name}")
