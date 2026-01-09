@@ -3,12 +3,12 @@
 import boto3
 from botocore.exceptions import ClientError
 
-# Setup connection
+# Connection setup
 ec2 = boto3.client('ec2', region_name='eu-north-1')
 instance_name = 'practical-ec2'
 
-# CHECK: Does the server exist?
-# We only care about running/stopped instances, not terminated ones
+# Check if the server exist
+# Interested only in running/stopped instances, not terminated ones
 print(f"Checking for existing '{instance_name}'...")
 
 response = ec2.describe_instances(
@@ -39,7 +39,7 @@ try:
         MinCount=1,
         MaxCount=1,
         InstanceType='t3.micro', # t2.micro is not available in eu-north-1
-        KeyName='boto3', # If you are cloning this, pls change this to a KeyPair you own!          
+        KeyName='boto3', # If you are cloning this, pls change this to a KeyPair you own         
         TagSpecifications=[
             {
                 'ResourceType': 'instance',
