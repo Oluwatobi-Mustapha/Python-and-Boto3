@@ -67,8 +67,17 @@ Application: [`S3-Bucket-creation`](https://github.com/Oluwatobi-Mustapha/Python
 # Boto3 continuation + CRUD
 Application: [`S3-crud`](https://github.com/Oluwatobi-Mustapha/Python-and-Boto3/blob/main/s3_crud.py)
 
-# Boto3 for EC2 management
+# Boto3 for EC2 mgt
 Application: [`EC2-Creation-and-termination`](https://github.com/Oluwatobi-Mustapha/Python-and-Boto3/blob/main/aws_ec2_toggle.py)
 
-## Learned: Boto3 Waiters (eventual consistency), Error Handling, Idempotency, Variable Management.
-Application: [`Automated VPC & Network Setup`](https://github.com/Oluwatobi-Mustapha/Python-and-Boto3/blob/main/vpc_builder_logic.py)
+# Boto3 for VPC mgt
+* Learned Boto3 Waiters (eventual consistency), Error Handling, Idempotency, Variable Management.
+  
+Application: 
+[`Automated VPC Setup`](https://github.com/Oluwatobi-Mustapha/Python-and-Boto3/blob/main/vpc_builder_logic.py)
+
+[`Automated VPC Teardown`](https://github.com/Oluwatobi-Mustapha/Python-and-Boto3/blob/main/vpc_destroyer_logic.py)
+           
+Screeenshot:![E2061654-E091-46AE-BE09-1C1874E92B77_4_5005_c](https://github.com/user-attachments/assets/2a82e8bb-1c4d-4627-8cea-0b6b8625771b)
+
+
