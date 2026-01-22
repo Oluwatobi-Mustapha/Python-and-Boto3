@@ -50,6 +50,7 @@ print(rt_id)
 
 # 6. Create the route
 r_response = client.create_route(RouteTableId=rt_id, DestinationCidrBlock='0.0.0.0/0', GatewayId=igw_id)
+print(f"Created default route (0.0.0.0/0) to IGW {igw_id} in route table {rt_id}")
 
 # 7. Associate the subnet to the route
 art_response = client.associate_route_table(RouteTableId=rt_id, SubnetId=subnet_id)
