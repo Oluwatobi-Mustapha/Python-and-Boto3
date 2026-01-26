@@ -84,11 +84,13 @@ Application: [`Automated VPC Setup`](https://github.com/Oluwatobi-Mustapha/Pytho
 
 # CIS AWS BENCHMARK
 Application:[`audit_keys`](https://github.com/Oluwatobi-Mustapha/Python-and-Boto3/blob/main/AWS_Cloud_Automation/audit_keys.py)
- **Discovery of duplicate access keys:**
+
+**Discovery of duplicate access keys:**
 <img width="2528" height="443" alt="image" src="https://github.com/user-attachments/assets/621f0299-82b7-4393-bc83-d39d18f8f3da" />
 
  **Deactivation:**
- ![alt text](51DB0E9C-72C3-4EF5-9D08-DC08B475D35A.png)
+<img width="1344" height="273" alt="51DB0E9C-72C3-4EF5-9D08-DC08B475D35A" src="https://github.com/user-attachments/assets/e910c336-6ba2-4f16-8159-f057141d87fe" />
+
 
 
 
