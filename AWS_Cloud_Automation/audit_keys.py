@@ -2,65 +2,69 @@ import boto3
 from tabulate import tabulate
 from colorama import Fore, Style, init
 
-# initialize Colorama (autoreset=True means color turns off automatically after print)
+# Initialize Colorama
 init(autoreset=True)
-
-# store all findings here to print one big table at the end
-table_data = []
-
-
 
 client = boto3.client('iam')
 
-# headers for table
-headers = ["User", "Key ID", "Status", "Created Date", "Action Required"]
+table_data = []
+headers = ["User", "Key ID", "Status", "Created Date", "Action Taken"]
 
-print(f"{Fore.CYAN} Starting CIS Benchmark Audit: Duplicate Access Keys...{Style.RESET_ALL}\n")
+print(f"{Fore.CYAN}Starting Audit & Cleanup: Deactivating Old Keys...{Style.RESET_ALL}\n")
 
-# --- the scan logic ---
-# list the iam keys
+# --- the logic loop ---
 users = client.list_users(MaxItems=50)
 
-# 1. iterate over users
 for user in users.get('Users', []):
     username = user.get('UserName')
-
-    # get the keys
+    
+    # Get keys
     keys_response = client.list_access_keys(UserName=username)
     keys_list = keys_response['AccessKeyMetadata']
 
-    # only if they have duplicates (more than 1 key)
+    # ONLY act if duplicates exist
     if len(keys_list) > 1:
-
-        # sort them: Oldest first [0], Newest last [-1]
+        
+        # Sort: Oldest [0] to Newest [-1]
         keys_list.sort(key=lambda k: k['CreateDate'])
 
-        # loop through the keys to format them for the table
+        # --- the remediation step ---
+        # identify the target (The Oldest Key)
+        key_to_deactivate = keys_list[0]
+        
+        # deactivate it immediately
+        # (only try to deactivate if it's currently Active)
+        if key_to_deactivate['Status'] == 'Active':
+            client.update_access_key(
+                UserName=username,
+                AccessKeyId=key_to_deactivate['AccessKeyId'],
+                Status='Inactive'
+            )
+            # update the object locally so the table shows the new status
+            key_to_deactivate['Status'] = 'Inactive'
+            action_message = f"{Fore.YELLOW}DEACTIVATED{Style.RESET_ALL}"
+        else:
+            action_message = f"{Fore.YELLOW}Already Inactive{Style.RESET_ALL}"
+
+        # --- the reporting step ---
         for key in keys_list:
             key_id = key['AccessKeyId']
             status = key['Status']
-            date = key['CreateDate'].strftime("%Y-%m-%d") # Clean format
-
-            # COLOR LOGIC: Make "Active" keys RED if there are duplicates
-            if status == 'Active':
+            date = key['CreateDate'].strftime("%Y-%m-%d")
+            
+            # special formatting for the deactivated Key
+            if key['AccessKeyId'] == key_to_deactivate['AccessKeyId']:
+                row_action = action_message
                 status_colored = f"{Fore.RED}{status}{Style.RESET_ALL}"
             else:
+                row_action = f"{Fore.GREEN}KEEP (Newest){Style.RESET_ALL}"
                 status_colored = f"{Fore.GREEN}{status}{Style.RESET_ALL}"
+            
+            table_data.append([username, key_id, status_colored, date, row_action])
 
-            # DECISION LOGIC: Mark the OLD one for deletion
-            if key == keys_list[0]: # The oldest one
-                action = f"{Fore.RED}DELETE (Oldest){Style.RESET_ALL}"
-            else:
-                action = f"{Fore.GREEN}KEEP (Newest){Style.RESET_ALL}"
-
-            # Add row to our table data
-            table_data.append([username, key_id, status_colored, date, action])
-
-# --- THE REPORT ---
+# -- the final display --
 if table_data:
     print(tabulate(table_data, headers=headers, tablefmt="fancy_grid"))
-    print(f"\n{Fore.RED}🚨 RISK DETECTED: Found {len(table_data)} keys involved in duplication.{Style.RESET_ALL}")
+    print(f"\n{Fore.GREEN}✅ COMPLETED: Old keys have been deactivated. Verify apps before deleting.{Style.RESET_ALL}")
 else:
     print(f"\n{Fore.GREEN}✅ COMPLIANT: No duplicate keys found.{Style.RESET_ALL}")
-
-   
