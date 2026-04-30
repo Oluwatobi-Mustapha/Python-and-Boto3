@@ -14,6 +14,14 @@
   --accent-neutral: #a3c6ff;
   --accent-neutral-soft: #a3c6ff24;
   --accent-neutral-strong: #dbe9ff;
+  --cta-accent: #5ecbff;
+  --cta-accent-soft: #5ecbff33;
+  --tag-border: #89b8ff5c;
+  --tag-border-hover: #9ed0ff7d;
+  --tag-text: #d7e9ff;
+  --tag-bg-top: #16284be8;
+  --tag-bg-bottom: #0b152df2;
+  --tag-glow: #5ecbff42;
   --chip-bg: #9fb4c924;
   --chip-text: #c9d5e1;
   --surface-1: #0a1530;
@@ -90,6 +98,14 @@
   --accent-neutral: #234bbb;
   --accent-neutral-soft: #234bbb1a;
   --accent-neutral-strong: #1b3c93;
+  --cta-accent: #2f6edc;
+  --cta-accent-soft: #2f6edc2b;
+  --tag-border: #3e72d96b;
+  --tag-border-hover: #2f6edc96;
+  --tag-text: #173771;
+  --tag-bg-top: #ffffff;
+  --tag-bg-bottom: #e9f2ff;
+  --tag-glow: #2f6edc33;
   --chip-bg: #2f5ed012;
   --chip-text: #264485;
   --surface-1: #f6faff;
@@ -1189,9 +1205,9 @@ section[id] {
 
 .button-solid {
   color: var(--ink-ui-text);
-  background: var(--ink-ui-bg);
-  border: 1px solid var(--ink-ui-border);
-  box-shadow: var(--ink-ui-shadow);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-3), var(--cta-accent) 16%), color-mix(in srgb, var(--surface-2), var(--cta-accent) 8%));
+  border: 1px solid color-mix(in srgb, var(--ink-ui-border), var(--cta-accent) 26%);
+  box-shadow: var(--ink-ui-shadow), 0 0 0 1px color-mix(in srgb, var(--cta-accent), #0000 78%);
 }
 
 .button-solid:hover, .button-outline:hover, .inline-action:hover {
@@ -1199,9 +1215,9 @@ section[id] {
 }
 
 .button-solid:hover {
-  background: var(--ink-ui-bg-hover);
-  border-color: var(--ink-ui-border-strong);
-  box-shadow: var(--ink-ui-shadow-hover);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-3), var(--cta-accent) 26%), color-mix(in srgb, var(--surface-2), var(--cta-accent) 14%));
+  border-color: color-mix(in srgb, var(--ink-ui-border-strong), var(--cta-accent) 36%);
+  box-shadow: var(--ink-ui-shadow-hover), 0 0 0 1px color-mix(in srgb, var(--cta-accent), #0000 66%), 0 0 18px color-mix(in srgb, var(--cta-accent), #0000 78%);
 }
 
 .button-outline, .inline-action {
@@ -1211,8 +1227,10 @@ section[id] {
 }
 
 .button-outline:hover, .inline-action:hover {
-  background: var(--button-ghost-bg-hover);
-  border-color: var(--button-ghost-border-hover);
+  color: var(--text-strong);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--button-ghost-bg-hover), var(--cta-accent) 14%), color-mix(in srgb, var(--button-ghost-bg), var(--cta-accent) 8%));
+  border-color: color-mix(in srgb, var(--button-ghost-border-hover), var(--cta-accent) 30%);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--cta-accent), #0000 76%);
 }
 
 .button-resume {
@@ -1521,13 +1539,14 @@ section[id] {
 .section-lead h2 {
   letter-spacing: -.04em;
   color: var(--heading);
+  text-shadow: 0 1px 0 color-mix(in srgb, var(--line), #0000 34%);
   margin: 0 0 4px;
   font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   line-height: 1.06;
 }
 
 .section-lead p {
-  color: var(--muted);
+  color: color-mix(in srgb, var(--muted), var(--text) 24%);
   margin: 8px 0 0;
   font-size: 1rem;
   line-height: 1.6;
@@ -1596,11 +1615,12 @@ section[id] {
   letter-spacing: -.02em;
   color: var(--heading);
   margin: 0;
+  font-weight: 650;
   line-height: 1.22;
 }
 
 .project-description-reference, .cert-card-reference p, .article-row-reference p {
-  color: var(--muted);
+  color: color-mix(in srgb, var(--muted), var(--text) 16%);
   margin: 10px 0 0;
   line-height: 1.75;
 }
@@ -1943,9 +1963,9 @@ section[id] {
 }
 
 .chip {
-  --chip-border: #9fb4c957;
-  --chip-ink: #dbe7f5;
-  --chip-glow: #7dd3fc3d;
+  --chip-border: var(--tag-border);
+  --chip-ink: var(--tag-text);
+  --chip-glow: var(--tag-glow);
   isolation: isolate;
   border: 1px solid var(--chip-border);
   min-height: 30px;
@@ -1953,7 +1973,7 @@ section[id] {
   letter-spacing: .01em;
   text-shadow: 0 1px #0000003d;
   transition: transform var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) var(--motion-ease), box-shadow var(--motion-fast) var(--motion-ease), color var(--motion-fast) var(--motion-ease);
-  background: linear-gradient(#ffffff14, #fff0 38%), linear-gradient(#121822f5, #090c12fa);
+  background: linear-gradient(#ffffff16, #fff0 38%), linear-gradient(var(--tag-bg-top), var(--tag-bg-bottom));
   border-radius: 999px;
   align-items: center;
   padding: 0 13px;
@@ -1990,20 +2010,20 @@ section[id] {
 }
 
 .chip:hover {
-  color: #eef6ff;
-  border-color: #bfdbfe70;
+  color: var(--text-strong);
+  border-color: var(--tag-border-hover);
   transform: translateY(-1px);
-  box-shadow: inset 0 1px #ffffff14, 0 12px 26px #0206175c, 0 0 0 1px #7dd3fc29;
+  box-shadow: inset 0 1px #ffffff1a, 0 12px 26px #0206175c, 0 0 0 1px color-mix(in srgb, var(--tag-glow), #0000 36%);
 }
 
 .chip-row .chip {
-  --chip-border: color-mix(in srgb, var(--line-strong), #0000 16%);
-  --chip-ink: var(--chip-text);
-  --chip-glow: color-mix(in srgb, var(--accent-neutral), #0000 72%);
+  --chip-border: color-mix(in srgb, var(--tag-border), #0000 10%);
+  --chip-ink: color-mix(in srgb, var(--tag-text), var(--text-strong) 12%);
+  --chip-glow: color-mix(in srgb, var(--tag-glow), #0000 30%);
 }
 
 .chip-soft {
-  background: linear-gradient(#ffffff0f, #fff0 36%), linear-gradient(#0e131cf2, #070a0efa);
+  background: linear-gradient(#ffffff10, #fff0 36%), linear-gradient(color-mix(in srgb, var(--tag-bg-top), #000 8%), color-mix(in srgb, var(--tag-bg-bottom), #000 10%));
 }
 
 .chip-with-icon {
@@ -2262,6 +2282,49 @@ section[id] {
 
 .project-github-link:hover .project-github-link-arrow {
   transform: translate(1px)translateY(-1px);
+}
+
+.project-interact-link {
+  color: var(--text-strong);
+  letter-spacing: .01em;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--surface-3), #fff 10%), color-mix(in srgb, var(--surface-2), #0000 8%));
+  border: 1px solid color-mix(in srgb, var(--line-strong), #fff 12%);
+  border-radius: 12px;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  font-size: .86rem;
+  font-weight: 600;
+  display: inline-flex;
+  box-shadow: inset 0 1px #ffffff22, 0 8px 16px #00000040;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.project-interact-link:hover {
+  color: var(--text-strong);
+  border-color: var(--line-strong);
+  transform: translateY(-1px);
+  box-shadow: inset 0 1px #ffffff2e, 0 12px 20px #00000052;
+}
+
+.project-interact-link:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent), #fff 22%);
+  outline-offset: 2px;
+}
+
+:root[data-theme="light"] .project-interact-link {
+  color: var(--text-strong);
+  background: linear-gradient(180deg, #ffffff, #edf4ff);
+  border-color: color-mix(in srgb, var(--line-strong), #0000 4%);
+  box-shadow: inset 0 1px #ffffff, 0 8px 14px #2c4e8a1a;
+}
+
+:root[data-theme="light"] .project-interact-link:hover {
+  color: var(--text-strong);
+  border-color: var(--line-strong);
 }
 
 .cert-grid-reference, .skills-grid-reference {
@@ -2960,18 +3023,18 @@ body:after {
 }
 
 :root[data-theme="light"] .chip {
-  --chip-border: #2f5ed04a;
-  --chip-ink: #123069;
-  --chip-glow: #3f7dff2e;
+  --chip-border: var(--tag-border);
+  --chip-ink: var(--tag-text);
+  --chip-glow: var(--tag-glow);
   text-shadow: none;
   background: linear-gradient(#ffffffd9, #f0f5ff);
   box-shadow: inset 0 1px #ffffff, 0 8px 16px #2a4d8f1a, 0 0 0 1px #2f5ed012;
 }
 
 :root[data-theme="light"] .chip-row .chip {
-  --chip-border: #2f5ed05c;
-  --chip-ink: #0f2b63;
-  --chip-glow: #3f7dff3b;
+  --chip-border: color-mix(in srgb, var(--tag-border), #000 8%);
+  --chip-ink: color-mix(in srgb, var(--tag-text), #0f2b63 35%);
+  --chip-glow: color-mix(in srgb, var(--tag-glow), #2f5edc 26%);
   letter-spacing: .015em;
   background: linear-gradient(180deg, #ffffff, #edf4ff 70%, #e8f1ff);
   box-shadow: inset 0 1px #ffffff, 0 10px 18px #2a4d8f18, 0 0 0 1px #2f5ed01f;
@@ -3088,9 +3151,9 @@ body:after {
 
 :root[data-theme="light"] .button-outline:hover,
 :root[data-theme="light"] .inline-action:hover {
-  background: #f5f9ff;
-  border-color: #2f5ed072;
-  box-shadow: 0 10px 20px #2a4d8f1f;
+  background: linear-gradient(180deg, #f8fbff, #edf4ff);
+  border-color: color-mix(in srgb, #2f5ed072, var(--cta-accent) 38%);
+  box-shadow: 0 10px 20px #2a4d8f1f, 0 0 0 1px color-mix(in srgb, var(--cta-accent), #0000 78%);
 }
 
 :root[data-theme="light"] .button-resume {
